@@ -7,8 +7,11 @@ if not game.hasValidSecret():
         game = Game(str(input("Enter a secret made up of letters only: ")))
 
 print("\n" * 100)
+game.draw()
 
 while not game.isLost():
     game.guessSecret(input("Guess a letter: "))
     if game.isWon():
         break
+
+print("You win! :D\n")

@@ -18,9 +18,7 @@ class Game():
         print("\n\n")
 
     def guessSecret(self, guess):
-        if self.secret.guess(guess):
-            print("Correct!")
-        else:
+        if not self.secret.guess(guess):
             self.gallows.progress()
         self.draw()
 

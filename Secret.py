@@ -9,24 +9,43 @@ class Secret():
         return self.word.isalpha()
 
     def guess(self, guess):
+        if not guess.isalpha():
+            return True
+
         if not self.alreadyGuessed(guess):
             self.guesses.append(guess.lower())
-        return guess.lower() in self.word
+            self.guesses.sort()
+
+        # Correct guess?
+        return guess.lower() in self.word.lower()
 
     def alreadyGuessed(self, guess):
         return guess.lower() in self.guesses
 
     def isKnown(self):
         for char in self.word:
-            if char not in self.guesses:
+            if char.lower() not in self.guesses:
                 return False
         return True
 
     def draw(self):
         s = ""
+        wrong = ""
+
+        # build the currently known word string
         for char in self.word:
-            if char in self.guesses:
-                s += char + " "
+            if char.lower() in self.guesses:
+                if char.isupper():
+                    s += " " + char.upper()
+                else:
+                    s += " " + char
             else:
-                s += "_ "
-        print(s)
+                s += " _"
+
+        # build the string of wrong guesses
+        for char in self.guesses:
+            if str(char) not in self.word.lower():
+                wrong += str(char.upper()) + ", "
+
+        print("The secret word:" + s)
+        print("\nWrong guesses:   " + wrong)
