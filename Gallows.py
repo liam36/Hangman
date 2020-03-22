@@ -2,18 +2,17 @@ class Gallows():
     """docstring for Gallows."""
 
     def __init__(self):
-        super(Gallows, self).__init__()
-        self.progress = 0
+        self.counter = 0
 
     # draw the hangman
-    def printNext(self):
+    def draw(self):
         filename = "Stage"
-        if self.progress < 10:
-            filename += " "
-        elif self.progress > 10:
+        if self.counter < 10:
+            filename += "0"
+        elif self.counter > 10:
             print("Error: cannot print gallows, game is already over")
             return
-        filename += str(self.progress) + ".txt"
+        filename += str(self.counter) + ".txt"
 
         file = open(filename, mode='r')
         if file.readable():
@@ -22,10 +21,12 @@ class Gallows():
             print("Error: cannot print gallows, file not readable")
         file.close()
 
-        self.progress += 1
+    # increase counter
+    def progress(self):
+        self.counter += 1
 
     def isFinished(self):
-        if self.progress > 9:
-            return true
+        if self.counter > 9:
+            return True
         else:
-            return false
+            return False
