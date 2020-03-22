@@ -1,3 +1,3 @@
 # Hangman
 
-Terminal Hangman implementation
+My first project in Python. Play Hangman in the terminal!
