@@ -9,7 +9,7 @@ class Secret():
         return self.word.isalpha()
 
     def guess(self, guess):
-        if not guess.isalpha() or len(guess) > 1:
+        if not guess.isalpha() or len(guess) > 1 or guess in self.guesses:
             return True
 
         if not self.alreadyGuessed(guess):
