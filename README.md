@@ -1,1 +1,3 @@
 # Hangman
+
+Terminal Hangman implementation
