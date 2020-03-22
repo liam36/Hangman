@@ -5,24 +5,27 @@ class Gallows():
         super(Gallows, self).__init__()
         self.progress = 0
 
-    def print(self):
+    # draw the hangman
+    def printNext(self):
         filename = "Stage"
         if self.progress < 10:
             filename += " "
+        elif self.progress > 10:
+            print("Error: cannot print gallows, game is already over")
+            return
         filename += str(self.progress) + ".txt"
 
         file = open(filename, mode='r')
         if file.readable():
             print(file.read())
         else:
-            print("Error: cannot print gallows")
+            print("Error: cannot print gallows, file not readable")
         file.close()
 
-    def continue(self):
-        progress += 1
+        self.progress += 1
 
     def isFinished(self):
-        if progress > 9:
+        if self.progress > 9:
             return true
         else:
             return false
