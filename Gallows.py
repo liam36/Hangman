@@ -6,7 +6,7 @@ class Gallows():
 
     # draw the hangman
     def draw(self):
-        filename = "Stage"
+        filename = "gallow_stages/Stage"
         if self.counter < 10:
             filename += "0"
         elif self.counter > 10:

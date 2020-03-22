@@ -12,6 +12,5 @@ game.draw()
 while not game.isLost():
     game.guessSecret(input("Guess a letter: "))
     if game.isWon():
+        print("You win! :D\n")
         break
-
-print("You win! :D\n")
